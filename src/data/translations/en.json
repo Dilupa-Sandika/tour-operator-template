@@ -1,0 +1,126 @@
+{
+  "Header": {
+    "home": "Home",
+    "tours": "Tours",
+    "destinations": "Destinations",
+    "aiPlanner": "AI Planner",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "planYourTrip": "Plan Your Trip"
+  },
+  "hero": {
+    "badge": "Explore Sri Lanka with Us",
+    "headline": {
+      "line1": "Discover Your",
+      "line2": "Next Adventure",
+      "line3": "in Paradise"
+    },
+    "subheadline": "Crafting unforgettable journeys through the heart of Ceylon.",
+    "cta": {
+      "explore": "Explore Tours",
+      "watchVideo": "Watch Video"
+    },
+    "stats": {
+      "happyTravelers": "Happy Travelers",
+      "uniqueTours": "Unique Tours",
+      "yearsExperience": "Years Experience",
+      "support": "24/7 Support"
+    }
+  },
+  "featuredTours": {
+    "title": "Featured Tours",
+    "subtitle": "Handpicked experiences for an unforgettable journey",
+    "viewAllTours": "View All Tours"
+  },
+  "tours": {
+    "viewDetails": "View Details",
+    "bookNow": "Book Now"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us?",
+    "subtitle": "Your adventure is our priority. Here's why travelers trust us.",
+    "features": {
+      "expertGuides": {
+        "title": "Expert Guides",
+        "description": "Passionate local guides who bring the stories of Sri Lanka to life."
+      },
+      "safetyFirst": {
+        "title": "Safety First",
+        "description": "Your safety is our top priority, with certified guides and vehicles."
+      },
+      "localExpertise": {
+        "title": "Local Expertise",
+        "description": "Discover hidden gems and authentic experiences only locals know."
+      },
+      "awardWinning": {
+        "title": "Award Winning",
+        "description": "Recognized for our commitment to exceptional travel experiences."
+      },
+      "personalized": {
+        "title": "Personalized Service",
+        "description": "We tailor every trip to your interests, ensuring a unique adventure."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Our team is available around the clock to assist you during your trip."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What Our Travelers Say",
+    "subtitle": "Real stories from our happy customers",
+    "tourExperienced": "Tour Experienced",
+    "pauseAutoplay": "Pause Autoplay",
+    "stats": {
+      "averageRating": "Average Rating",
+      "happyCustomers": "Happy Customers",
+      "recommendRate": "Recommend Rate"
+    }
+  },
+  "blog": {
+    "title": "Latest from Our Blog",
+    "subtitle": "Travel tips, guides, and stories to inspire your next adventure."
+  },
+  "newsletter": {
+    "title": "Join Our Newsletter",
+    "subtitle": "Get exclusive deals, travel inspiration, and updates straight to your inbox.",
+    "placeholder": "Enter your email address",
+    "button": "Subscribe"
+  },
+  "Destinations": {
+    "colombo": {
+      "title": "Discover Colombo",
+      "description": "Explore the vibrant commercial capital of Sri Lanka."
+    },
+    "noTours": "No tours currently available for this destination."
+  },
+  "chat": {
+    "toggleChat": "Toggle Chat",
+    "welcomeOnline": "Welcome to Ceylon Excursion! How can we help you plan your trip?",
+    "welcomeOffline": "We're currently offline, but please leave a message!",
+    "howCanWeHelp": "What are you interested in?",
+    "onlineNow": "Online Now",
+    "offlineMessage": "Typically replies in a few hours",
+    "typeMessage": "Type your message...",
+    "continueOnWhatsApp": "Continue on WhatsApp",
+    "defaultMessage": "Hello! I'm interested in learning more about your tours.",
+    "quickRepliesTitle": "Or choose a quick reply:",
+    "quickReplies": {
+      "tours": "Tell me about your tours",
+      "pricing": "What are your prices?",
+      "booking": "How do I book?",
+      "info": "I need more information"
+    },
+    "responses": {
+      "connecting": "Great! One moment while we connect you to an agent...",
+      "tours": "We offer a wide range of tours! You can see all of them on our tours page. Are you interested in a specific type, like cultural or wildlife tours?",
+      "pricing": "Our tour prices vary. For specific pricing, please visit the page for the tour you're interested in.",
+      "booking": "You can book directly by sending us an inquiry on the tour page. We'll get back to you right away to finalize the details!",
+      "default": "Thanks for your message! An agent will be with you shortly to help with that."
+    }
+  }
+}
+
+
