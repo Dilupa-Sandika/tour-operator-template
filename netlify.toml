@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_ENV = "production"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Environment variables (you'll need to set these in Netlify UI)
+# NEXT_PUBLIC_SANITY_PROJECT_ID
+# NEXT_PUBLIC_SANITY_DATASET  
+# NEXT_PUBLIC_WHATSAPP_NUMBER
+# SANITY_API_READ_TOKEN (optional)
+# OPENAI_API_KEY (optional)

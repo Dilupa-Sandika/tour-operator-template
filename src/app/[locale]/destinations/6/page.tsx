@@ -3,7 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Clock, Star, Calendar, Camera, Users, ArrowRight, Heart, Share2, TreePine, Binoculars, Wild, Eye } from 'lucide-react';
+import { MapPin, Clock, Star, Calendar, Camera, Users, ArrowRight, Heart, Share2, TreePine, Search, Compass, Eye } from 'lucide-react';
 import Link from 'next/link';
 
 export default function YalaNationalParkPage() {
@@ -157,7 +157,7 @@ export default function YalaNationalParkPage() {
         <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
           <div className="max-w-4xl mx-auto text-white text-center">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Binoculars className="w-4 h-4" />
+              <Search className="w-4 h-4" />
               Wildlife Sanctuary
             </div>
             
@@ -265,7 +265,7 @@ export default function YalaNationalParkPage() {
                     <h3 className="text-xl font-bold text-gray-900 mb-6">Park Information</h3>
                     <div className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <Wild className="w-5 h-5 text-primary" />
+                        <Compass className="w-5 h-5 text-primary" />
                         <div>
                           <div className="font-medium">Wildlife Density</div>
                           <div className="text-sm text-gray-600">Highest leopard density in the world</div>
@@ -455,7 +455,7 @@ export default function YalaNationalParkPage() {
                     <div key={tour.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2">
                       <div className="h-48 bg-gradient-to-r from-secondary/20 to-accent/20 flex items-center justify-center">
                         <div className="text-center">
-                          <Binoculars className="w-12 h-12 text-white mb-2 mx-auto" />
+                          <Search className="w-12 h-12 text-white mb-2 mx-auto" />
                           <p className="text-white font-medium">Safari Adventure</p>
                         </div>
                       </div>
