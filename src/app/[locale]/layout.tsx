@@ -1,14 +1,3 @@
-// src/app/[locale]/layout.tsx
-// src/app/[locale]/layout.tsx
-
-// src/app/[locale]/layout.tsx
-// src/app/[locale]/layout.tsx
-
-// src/app/[locale]/layout.tsx
-
-
-// src/app/[locale]/layout.tsx
-
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import { notFound } from 'next/navigation';
@@ -106,43 +95,3 @@ export function generateStaticParams() {
 
 
 
-/*
-import { Inter, Poppins } from 'next/font/google';
-import { notFound } from 'next/navigation';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import '../globals.css';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-poppins' });
-
-const locales = ['en', 'de', 'es'];
-
-export default function LocaleLayout({ 
-  children, 
-  params: { locale } 
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  if (!locales.includes(locale)) notFound();
-
-  const messages = useMessages();
-
-  return (
-    <html lang={locale}>
-      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
-}*/

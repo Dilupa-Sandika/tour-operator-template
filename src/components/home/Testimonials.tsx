@@ -1,8 +1,6 @@
-// src/components/home/Testimonials.tsx
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Star, 
@@ -16,9 +14,6 @@ import {
   Pause
 } from 'lucide-react';
 import Image from 'next/image';
-
-// Utils
-import { cn } from '@/lib/utils/cn';
 
 interface Testimonial {
   id: string;
@@ -35,15 +30,28 @@ interface Testimonial {
   videoThumbnail?: string;
 }
 
-const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [direction, setDirection] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout>();
-  
-  const t = useTranslations('testimonials');
+const translations = {
+  badge: 'Loved by Travelers',
+  title: 'What Our Guests Say',
+  subtitle: 'Real experiences from real travelers who discovered Sri Lanka with us',
+  tourExperienced: 'Tour Experienced',
+  previous: 'Previous testimonial',
+  next: 'Next testimonial',
+  pauseAutoplay: 'Pause autoplay',
+  playAutoplay: 'Play autoplay',
+  stats: {
+    averageRating: 'Average Rating',
+    happyCustomers: 'Happy Customers',
+    recommendRate: 'Recommend Rate'
+  }
+};
 
-  // Mock testimonials data (in real app, fetch from Sanity)
+export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
+  const [direction, setDirection] = useState<number>(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
   const testimonials: Testimonial[] = [
     {
       id: '1',
@@ -132,31 +140,29 @@ const Testimonials = () => {
     };
   }, [isAutoPlaying, testimonials.length]);
 
-  const goToNext = () => {
+  const goToNext = (): void => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
-  const goToPrevious = () => {
+  const goToPrevious = (): void => {
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const goToSlide = (index: number) => {
+  const goToSlide = (index: number): void => {
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
   const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }).map((_, i) => (
-      <Star
-        key={i}
-        className={cn(
-          'h-4 w-4',
-          i < rating ? 'fill-accent-400 text-accent-400' : 'text-neutral-300'
-        )}
-      />
-    ));
+    return Array.from({ length: 5 }).map((_, i) => {
+      const starClass = i < rating 
+        ? 'h-4 w-4 fill-yellow-400 text-yellow-400' 
+        : 'h-4 w-4 text-gray-300';
+      
+      return <Star key={i} className={starClass} />;
+    });
   };
 
   const variants = {
@@ -179,231 +185,238 @@ const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <div className="relative">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 rounded-3xl transform rotate-1" />
-      
-      <div className="relative bg-white rounded-3xl shadow-soft border border-neutral-100 overflow-hidden">
-        {/* Header */}
-        <div className="text-center p-8 pb-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-primary-100 text-primary-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-          >
-            <Heart className="h-4 w-4" />
-            {t('badge')}
-          </motion.div>
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-2">
-            {t('title')}
-          </h2>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
-        </div>
+    <section className="w-full py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="relative">
+          {/* Background Decoration */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-teal-50 rounded-3xl transform rotate-1" />
+          
+          <div className="relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+            {/* Header */}
+            <div className="text-center p-8 pb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4"
+              >
+                <Heart className="h-4 w-4" />
+                {translations.badge}
+              </motion.div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+                {translations.title}
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {translations.subtitle}
+              </p>
+            </div>
 
-        {/* Main Testimonial */}
-        <div className="relative h-96 overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className="absolute inset-0 flex items-center"
-            >
-              <div className="w-full px-8 lg:px-16">
-                <div className="max-w-4xl mx-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    {/* Content */}
-                    <div className="space-y-6">
-                      {/* Quote Icon */}
-                      <Quote className="h-12 w-12 text-primary-200" />
-                      
-                      {/* Rating */}
-                      <div className="flex items-center gap-1">
-                        {renderStars(currentTestimonial.rating)}
-                      </div>
-
-                      {/* Review Text */}
-                      <blockquote className="text-lg lg:text-xl text-neutral-700 leading-relaxed italic">
-                        "{currentTestimonial.review}"
-                      </blockquote>
-
-                      {/* Tour Info */}
-                      <div className="bg-primary-50 rounded-lg p-4">
-                        <div className="text-sm text-primary-600 font-medium mb-1">
-                          {t('tourExperienced')}
-                        </div>
-                        <div className="font-semibold text-neutral-900">
-                          {currentTestimonial.tourTitle}
-                        </div>
-                        <div className="flex items-center gap-4 text-sm text-neutral-600 mt-2">
+            {/* Main Testimonial */}
+            <div className="relative h-96 overflow-hidden">
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }}
+                  className="absolute inset-0 flex items-center"
+                >
+                  <div className="w-full px-8 lg:px-16">
+                    <div className="max-w-4xl mx-auto">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        {/* Content */}
+                        <div className="space-y-6">
+                          {/* Quote Icon */}
+                          <Quote className="h-12 w-12 text-blue-200" />
+                          
+                          {/* Rating */}
                           <div className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>{new Date(currentTestimonial.date).toLocaleDateString()}</span>
+                            {renderStars(currentTestimonial.rating)}
                           </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin className="h-4 w-4" />
-                            <span>{currentTestimonial.location}, {currentTestimonial.country}</span>
-                          </div>
-                        </div>
-                      </div>
 
-                      {/* Author */}
-                      <div className="flex items-center gap-4">
-                        <div className="relative">
-                          <Image
-                            src={currentTestimonial.avatar}
-                            alt={currentTestimonial.name}
-                            width={60}
-                            height={60}
-                            className="rounded-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-neutral-900">
-                            {currentTestimonial.name}
-                          </div>
-                          <div className="text-sm text-neutral-600">
-                            {currentTestimonial.location}, {currentTestimonial.country}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                          {/* Review Text */}
+                          <blockquote className="text-lg lg:text-xl text-gray-700 leading-relaxed italic">
+                            &quot;{currentTestimonial.review}&quot;
+                          </blockquote>
 
-                    {/* Media */}
-                    <div className="relative">
-                      {currentTestimonial.isVideo ? (
-                        <div className="relative group cursor-pointer">
-                          <Image
-                            src={currentTestimonial.videoThumbnail!}
-                            alt="Video testimonial"
-                            width={500}
-                            height={350}
-                            className="rounded-xl object-cover w-full h-64 lg:h-80"
-                          />
-                          <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center group-hover:bg-black/30 transition-colors">
-                            <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                              <Play className="h-6 w-6 text-primary-600 ml-1" />
+                          {/* Tour Info */}
+                          <div className="bg-blue-50 rounded-lg p-4">
+                            <div className="text-sm text-blue-700 font-medium mb-1">
+                              {translations.tourExperienced}
+                            </div>
+                            <div className="font-semibold text-gray-900">
+                              {currentTestimonial.tourTitle}
+                            </div>
+                            <div className="flex items-center gap-4 text-sm text-gray-600 mt-2">
+                              <div className="flex items-center gap-1">
+                                <Calendar className="h-4 w-4" />
+                                <span>{new Date(currentTestimonial.date).toLocaleDateString()}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <MapPin className="h-4 w-4" />
+                                <span>{currentTestimonial.location}, {currentTestimonial.country}</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Author */}
+                          <div className="flex items-center gap-4">
+                            <div className="relative">
+                              <Image
+                                src={currentTestimonial.avatar}
+                                alt={currentTestimonial.name}
+                                width={60}
+                                height={60}
+                                className="rounded-full object-cover"
+                              />
+                            </div>
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                {currentTestimonial.name}
+                              </div>
+                              <div className="text-sm text-gray-600">
+                                {currentTestimonial.location}, {currentTestimonial.country}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      ) : currentTestimonial.images && currentTestimonial.images.length > 0 ? (
-                        <div className="grid grid-cols-2 gap-2">
-                          {currentTestimonial.images.map((image, index) => (
-                            <Image
-                              key={index}
-                              src={image}
-                              alt={`${currentTestimonial.name}'s experience`}
-                              width={250}
-                              height={200}
-                              className="rounded-lg object-cover w-full h-32 lg:h-40"
-                            />
-                          ))}
+
+                        {/* Media */}
+                        <div className="relative">
+                          {currentTestimonial.isVideo ? (
+                            <div className="relative group cursor-pointer">
+                              <Image
+                                src={currentTestimonial.videoThumbnail || ''}
+                                alt="Video testimonial"
+                                width={500}
+                                height={350}
+                                className="rounded-xl object-cover w-full h-64 lg:h-80"
+                              />
+                              <div className="absolute inset-0 bg-black bg-opacity-20 rounded-xl flex items-center justify-center group-hover:bg-opacity-30 transition-all">
+                                <div className="w-16 h-16 bg-white bg-opacity-90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                  <Play className="h-6 w-6 text-blue-600 ml-1" />
+                                </div>
+                              </div>
+                            </div>
+                          ) : currentTestimonial.images && currentTestimonial.images.length > 0 ? (
+                            <div className="grid grid-cols-2 gap-2">
+                              {currentTestimonial.images.map((image, index) => (
+                                <Image
+                                  key={index}
+                                  src={image}
+                                  alt={`${currentTestimonial.name} experience`}
+                                  width={250}
+                                  height={200}
+                                  className="rounded-lg object-cover w-full h-32 lg:h-40"
+                                />
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="w-full h-64 lg:h-80 bg-gradient-to-br from-blue-100 to-teal-100 rounded-xl flex items-center justify-center">
+                              <Heart className="h-16 w-16 text-blue-300" />
+                            </div>
+                          )}
                         </div>
-                      ) : (
-                        <div className="w-full h-64 lg:h-80 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-xl flex items-center justify-center">
-                          <Heart className="h-16 w-16 text-primary-300" />
-                        </div>
-                      )}
+                      </div>
                     </div>
                   </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation */}
+            <div className="p-8 pt-4">
+              <div className="flex items-center justify-between">
+                {/* Previous Button */}
+                <button
+                  onClick={goToPrevious}
+                  className="p-3 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-700 rounded-full transition-colors"
+                  aria-label={translations.previous}
+                  type="button"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+
+                {/* Dots Indicator */}
+                <div className="flex items-center gap-2">
+                  {testimonials.map((_, index) => {
+                    const dotClass = index === currentIndex
+                      ? 'w-8 h-3 bg-blue-600 rounded-full transition-all duration-200'
+                      : 'w-3 h-3 bg-gray-300 hover:bg-blue-300 rounded-full transition-all duration-200';
+                    
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={dotClass}
+                        aria-label={`Go to testimonial ${index + 1}`}
+                        type="button"
+                      />
+                    );
+                  })}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={goToNext}
+                  className="p-3 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-700 rounded-full transition-colors"
+                  aria-label={translations.next}
+                  type="button"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Auto-play Control */}
+              <div className="flex items-center justify-center mt-4">
+                <button
+                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                  className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-700 transition-colors"
+                  type="button"
+                >
+                  {isAutoPlaying ? (
+                    <Pause className="h-4 w-4" />
+                  ) : (
+                    <Play className="h-4 w-4" />
+                  )}
+                  {isAutoPlaying ? translations.pauseAutoplay : translations.playAutoplay}
+                </button>
+              </div>
+            </div>
+
+            {/* Summary Stats */}
+            <div className="bg-gradient-to-r from-blue-50 to-teal-50 p-6">
+              <div className="grid grid-cols-3 gap-6 text-center max-w-2xl mx-auto">
+                <div>
+                  <div className="text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
+                    4.9/5
+                  </div>
+                  <div className="text-sm text-gray-600">{translations.stats.averageRating}</div>
+                </div>
+                <div>
+                  <div className="text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
+                    500+
+                  </div>
+                  <div className="text-sm text-gray-600">{translations.stats.happyCustomers}</div>
+                </div>
+                <div>
+                  <div className="text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
+                    98%
+                  </div>
+                  <div className="text-sm text-gray-600">{translations.stats.recommendRate}</div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Navigation */}
-        <div className="p-8 pt-4">
-          <div className="flex items-center justify-between">
-            {/* Previous Button */}
-            <button
-              onClick={goToPrevious}
-              className="p-3 bg-neutral-100 hover:bg-primary-100 text-neutral-600 hover:text-primary-600 rounded-full transition-colors"
-              aria-label={t('previous')}
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-
-            {/* Dots Indicator */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={cn(
-                    'w-3 h-3 rounded-full transition-all duration-200',
-                    index === currentIndex
-                      ? 'bg-primary-500 w-8'
-                      : 'bg-neutral-300 hover:bg-primary-300'
-                  )}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Next Button */}
-            <button
-              onClick={goToNext}
-              className="p-3 bg-neutral-100 hover:bg-primary-100 text-neutral-600 hover:text-primary-600 rounded-full transition-colors"
-              aria-label={t('next')}
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Auto-play Control */}
-          <div className="flex items-center justify-center mt-4">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="flex items-center gap-2 text-sm text-neutral-600 hover:text-primary-600 transition-colors"
-            >
-              {isAutoPlaying ? (
-                <Pause className="h-4 w-4" />
-              ) : (
-                <Play className="h-4 w-4" />
-              )}
-              {isAutoPlaying ? t('pauseAutoplay') : t('playAutoplay')}
-            </button>
-          </div>
-        </div>
-
-        {/* Summary Stats */}
-        <div className="bg-gradient-to-r from-primary-50 to-secondary-50 p-6">
-          <div className="grid grid-cols-3 gap-6 text-center max-w-2xl mx-auto">
-            <div>
-              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-1">
-                4.9/5
-              </div>
-              <div className="text-sm text-neutral-600">{t('stats.averageRating')}</div>
-            </div>
-            <div>
-              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-1">
-                500+
-              </div>
-              <div className="text-sm text-neutral-600">{t('stats.happyCustomers')}</div>
-            </div>
-            <div>
-              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-1">
-                98%
-              </div>
-              <div className="text-sm text-neutral-600">{t('stats.recommendRate')}</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Testimonials;
+}

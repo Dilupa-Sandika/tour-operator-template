@@ -1,1 +1,124 @@
-{}
+{
+  "Header": {
+    "home": "Inicio",
+    "tours": "Tours",
+    "destinations": "Destinos",
+    "aiPlanner": "Planificador IA",
+    "blog": "Blog",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "planYourTrip": "Planifica tu viaje"
+  },
+  "hero": {
+    "badge": "Explora Sri Lanka con nosotros",
+    "headline": {
+      "line1": "Descubre tu",
+      "line2": "próxima aventura",
+      "line3": "en el paraíso"
+    },
+    "subheadline": "Creando viajes inolvidables a través del corazón de Ceilán.",
+    "cta": {
+      "explore": "Explorar Tours",
+      "watchVideo": "Ver Video"
+    },
+    "stats": {
+      "happyTravelers": "Viajeros Felices",
+      "uniqueTours": "Tours Únicos",
+      "yearsExperience": "Años de Experiencia",
+      "support": "Soporte 24/7"
+    }
+  },
+  "featuredTours": {
+    "title": "Tours Destacados",
+    "subtitle": "Experiencias seleccionadas para un viaje inolvidable",
+    "viewAllTours": "Ver Todos los Tours"
+  },
+  "tours": {
+    "viewDetails": "Ver Detalles",
+    "bookNow": "Reservar Ahora"
+  },
+  "whyChooseUs": {
+    "title": "¿Por qué elegirnos?",
+    "subtitle": "Tu aventura es nuestra prioridad. Por eso los viajeros confían en nosotros.",
+    "features": {
+      "expertGuides": {
+        "title": "Guías Expertos",
+        "description": "Guías locales apasionados que dan vida a las historias de Sri Lanka."
+      },
+      "safetyFirst": {
+        "title": "Seguridad Primero",
+        "description": "Tu seguridad es nuestra máxima prioridad, con guías y vehículos certificados."
+      },
+      "localExpertise": {
+        "title": "Experiencia Local",
+        "description": "Descubre joyas ocultas y experiencias auténticas que solo los locales conocen."
+      },
+      "awardWinning": {
+        "title": "Galardonados",
+        "description": "Reconocidos por nuestro compromiso con experiencias de viaje excepcionales."
+      },
+      "personalized": {
+        "title": "Servicio Personalizado",
+        "description": "Adaptamos cada viaje a tus intereses, asegurando una aventura única."
+      },
+      "support": {
+        "title": "Soporte 24/7",
+        "description": "Nuestro equipo está disponible las 24 horas para ayudarte durante tu viaje."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Testimonios",
+    "title": "Lo que dicen nuestros viajeros",
+    "subtitle": "Historias reales de nuestros clientes satisfechos",
+    "tourExperienced": "Tour Experimentado",
+    "pauseAutoplay": "Pausar Auto-reproducción",
+    "stats": {
+      "averageRating": "Calificación Promedio",
+      "happyCustomers": "Clientes Satisfechos",
+      "recommendRate": "Tasa de Recomendación"
+    }
+  },
+  "blog": {
+    "title": "Lo último de nuestro blog",
+    "subtitle": "Consejos de viaje, guías e historias para inspirar tu próxima aventura."
+  },
+  "newsletter": {
+    "title": "Únete a nuestro boletín",
+    "subtitle": "Obtén ofertas exclusivas, inspiración de viaje y actualizaciones directamente en tu bandeja de entrada.",
+    "placeholder": "Ingresa tu dirección de email",
+    "button": "Suscribirse"
+  },
+  "Destinations": {
+    "colombo": {
+      "title": "Descubre Colombo",
+      "description": "Explora la vibrante capital comercial de Sri Lanka."
+    },
+    "noTours": "No hay tours disponibles actualmente para este destino."
+  },
+  "chat": {
+    "toggleChat": "Alternar Chat",
+    "welcomeOnline": "¡Bienvenido a Ceylon Excursion! ¿Cómo podemos ayudarte a planificar tu viaje?",
+    "welcomeOffline": "Actualmente estamos desconectados, ¡pero por favor deja un mensaje!",
+    "howCanWeHelp": "¿En qué estás interesado?",
+    "onlineNow": "En línea ahora",
+    "offlineMessage": "Normalmente responde en unas horas",
+    "typeMessage": "Escribe tu mensaje...",
+    "continueOnWhatsApp": "Continuar en WhatsApp",
+    "defaultMessage": "¡Hola! Me interesa conocer más sobre sus tours.",
+    "quickRepliesTitle": "O elige una respuesta rápida:",
+    "quickReplies": {
+      "tours": "Cuéntame sobre tus tours",
+      "pricing": "¿Cuáles son tus precios?",
+      "booking": "¿Cómo hago una reserva?",
+      "info": "Necesito más información"
+    },
+    "responses": {
+      "connecting": "¡Genial! Un momento mientras te conectamos con un agente...",
+      "tours": "¡Ofrecemos una amplia gama de tours! Puedes verlos todos en nuestra página de tours. ¿Te interesan tours específicos, como culturales o de vida silvestre?",
+      "pricing": "Los precios de nuestros tours varían. Para precios específicos, visita la página del tour que te interese.",
+      "booking": "Puedes reservar directamente enviándonos una consulta en la página del tour. ¡Te responderemos de inmediato para finalizar los detalles!",
+      "default": "¡Gracias por tu mensaje! Un agente estará contigo pronto para ayudarte con eso."
+    }
+  }
+}

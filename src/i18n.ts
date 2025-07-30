@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 
 // Can be imported from a shared config
-const locales = ['en', 'es', 'de', 'fr', 'pt', 'ru', 'ja', 'ar', 'it', 'hi'];
+const locales = ['en', 'es', 'de'];
 
 export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid

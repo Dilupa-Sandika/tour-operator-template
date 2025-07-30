@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(rm:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(sudo npm install:*)",
+      "Bash(pkill:*)",
+      "Bash(true)",
+      "Bash(ls:*)",
+      "Bash(timeout 15 npm run dev)",
+      "Bash(npx create-next-app:*)",
+      "Bash(node:*)",
+      "Bash(npx next:*)",
+      "Bash(timeout 120 rm -rf node_modules)"
+    ],
+    "deny": []
+  }
+}
