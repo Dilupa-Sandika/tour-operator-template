@@ -1,0 +1,12 @@
+# Redirect root to default locale
+/  /en  302
+
+# Handle language-specific redirects
+/tours  /en/tours  302
+/destinations  /en/destinations  302
+/about  /en/about  302
+/contact  /en/contact  302
+/blog  /en/blog  302
+
+# Fallback for any other routes
+/*  /en/:splat  302

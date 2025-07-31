@@ -15,7 +15,8 @@
       "Bash(npx create-next-app:*)",
       "Bash(node:*)",
       "Bash(npx next:*)",
-      "Bash(timeout 120 rm -rf node_modules)"
+      "Bash(timeout 120 rm -rf node_modules)",
+      "Bash(timeout 60 npm run build)"
     ],
     "deny": []
   }
